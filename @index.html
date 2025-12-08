@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>HIVELAB Gulp-V4 : 마크업 산출물</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+*{margin:0;padding:0;font-family: "Noto Sans KR", sans-serif;}
+html{width:100%;}
+body{width:100%;min-height:100%;background-color:#fff;padding-bottom:80px;}
+ul,ol{list-style:none}
+a {text-decoration:none;color:inherit;}
+.index-header{position:fixed;top:0;left:0;display:flex;justify-content:space-between;align-items:center;width:100%;min-height:80px;padding:0 20px;background:#333;z-index:2;box-sizing: border-box;}
+.index-header .index-title{padding:8px;font-size:25px;font-weight:700;color:#f1f1f1;box-sizing: border-box;}
+input,button, select{outline:none;border:0;}
+.index-header .index-search {max-width:400px;width:100%;display:flex;flex-wrap:wrap;justify-content:center;font-size:12px;}
+.index-search label{vertical-align:middle;margin-right:10px;font-weight:300;color:#fcc4b3}
+.index-search input,.index-search select{font-size:12px;vertical-align:middle;padding:3px 5px;color:#333}
+.index-search .index-search-date{display: flex;margin-left:0;}
+.index-search > li {display: flex;padding:5px 10px;border-bottom:1px solid #ddd;}
+.index-search .index-search-keyword input{width:170px}
+.index-section-category {padding:100px 20px 20px;background:#f9f9f9}
+.index-category-list {overflow-y:auto; max-height:100px;}
+.index-section-category a{color:#555;font-size:12px;}
+.sub-title{padding:10px;font-size:17px;font-weight:700;border-bottom:1px solid #999;scroll-margin-top:50px; color:#222;scroll-margin-top:100px;}
+.index-section-category .sub-title.cate {font-size:14px; border-bottom:1px solid #333;padding:5px 10px;box-sizing: border-box;}
+section .index-cate-item{padding:4px 10px;border-bottom:1px solid #ddd;box-sizing: border-box;}
+section .index-title{padding:8px;font-size:25px;font-weight:700;color:#2d2d2d;border-bottom:2px solid #2d2d2d;}
+section .sub-title:not(:first-of-type){margin-top:10px;}
+.section-list {padding:20px 20px 40px;}
+.section-list:last-of-type{padding-bottom: 100px;}
+.index-section-category .index-title,
+.section-list .index-title {color:#18407e;background-color:#f7f5f5;}
+.sub-title:not(.cate):not(:first-of-type){margin-top:15px;}
+.index-section-item{display:block;padding:7px 10px;border-bottom:1px solid #ddd;}
+.index-link-title {display:inline-block;margin-right:15px;}
+.index-section-item .filename{background-color:#e9e9e9;padding:1px 5px;border-radius:4px;word-wrap:break-word}
+.section-list .index-link{font-size:13px;color:#777;text-decoration:none;letter-spacing:.6px;padding:1px 5px;border-radius:3px}
+.section-list .index-link:hover{color:#333}
+.index-section-info{padding:15px 20px 0;font-size:12px;color:#666}
+.index-section-info span{vertical-align:top;margin-top:2px;}
+.new{display:inline-block;position:relative;top:-1px;height:16px;padding:0 5px 1px;border-radius:3px;background:#b93636;font-family:verdana;font-size:11px;font-weight:400;color:#fff;line-height:16px;vertical-align:middle;}
+.update{display:inline-block;position:relative;top:-1px;height:16px;background:#45a7fb;color:#fff;padding:0 5px 1px;border-radius:3px;font-family:verdana;font-size:11px;font-weight:400;line-height:16px;vertical-align:middle;}
+.matching_keywords{background:#2aff9c;color:#16752e}
+.index-footer{position:fixed;bottom:0;left:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:10px 20px;background:#333;min-height:40px;max-height:60px;}
+.preview_btn{height:36px;margin:10px;padding:10px;border:none;border-radius:6px;background:#777;font-size:12px;font-weight:bold;color:#fff;cursor:pointer}
+.index-footer .index-info{font-size:12px;color:#fff;letter-spacing:2px}
+#index_view{position:fixed;z-index:100;left:30%;top:100px;bottom:10px;width:var(--size);border:1px solid #000;background:#fff;}#index_view iframe{width:100%;height:100%;overflow:auto}.on a{background:#ffff93}
+@media screen and (max-width:767px){
+ .index-header {flex-direction: column;flex-wrap: wrap;text-align:center;padding:10px;box-sizing: border-box;}
+ .index-section-category{margin-top:130px;}
+ .index-search{max-width:360px !important;}
+ .index-search > li {padding:5px 10px;border-bottom:none;}
+ section {padding-left:10px !important;padding-right:10px !important;}
+ .section-list .index-link{display:inline-block;}
+ .section-list .index-link .filename{display:inline-block;margin-top:10px;}
+ .new, .update {margin-left:5px !important;}
+}
+</style>
+</head>
+<body>
+	<header class="index-header">
+		<h1 class="index-title">HIVELAB Gulp-V4 : 마크업 산출물 <button type="button" class="preview_btn">Preview</button></h1>
+		<ul class="index-search">
+			<li class="index-search-menu">
+				<label for="index-search-from-menu">Menu</label>
+				<select name="" id="index-search-from-menu">
+				</select>
+			</li>
+			<li class="index-search-date">
+				<label for="index-search-from-date">Updated date</label>
+				<select name="" id="index-search-from-date">
+				</select>
+			</li>
+			<li class="index-search-keyword">
+				<label for="index-search-by-keyword">Searching by keywords</label><input type="text" id="index-search-by-keyword" placeholder="Keywords">
+			</li>
+		</ul>
+	</header>
+	<section class="index-section-category" id="cate-top">
+		<h2 class="index-title">카테고리 바로가기</h2>
+		<ul class="index-category-list">
+			<li class="index-cate-item"><a href="#tab-01">search</a></li>
+			<li class="index-cate-item"><a href="#tab-02">Main</a></li>
+			<li class="index-cate-item"><a href="#tab-03"></a></li>
+		</ul>	
+	</section>
+	<section class="index-section-info">
+		<span class="label-date new"></span> NEW <span class="label-date update"></span> UPDATE
+	</section>
+	<section class="section-list">
+		<h2 id="tab_doc" class="index-title">Document</h2>
+		<h3 id="tab-01" class="sec_h sub-title">search</h3>
+		<ul class="list-box">
+		<li class="index-section-item"><a class="index-link" href="views/01_search.html">
+			<span class="index-link-title">search</span>
+			<span class="filename">views/01_search.html</span></a>
+			<span class="label-date new">2025.09.19</span>		</li>
+		</ul>
+		<h3 id="tab-02" class="sec_h sub-title">Main</h3>
+		<ul class="list-box">
+		<li class="index-section-item"><a class="index-link" href="views/02_search.html">
+			<span class="index-link-title">search</span>
+			<span class="filename">views/02_search.html</span></a>
+			<span class="label-date new">2025.09.19</span>		</li>
+		</ul>
+		<h3 id="tab-03" class="sec_h sub-title"></h3>
+		<ul class="list-box">
+		<li class="index-section-item"><a class="index-link" href="views/03_filter_cards.html">
+			<span class="index-link-title">Filter Cards Demo</span>
+			<span class="filename">views/03_filter_cards.html</span></a>
+			<span class="label-date new">2025.12.10</span>		</li>
+		<li class="index-section-item"><a class="index-link" href="views/04_filter_sync.html">
+			<span class="index-link-title">Filter Cards with URL Sync</span>
+			<span class="filename">views/04_filter_sync.html</span></a>
+			<span class="label-date new">2025.12.10</span>		</li>
+		<li class="index-section-item"><a class="index-link" href="views/05_filter_all.html">
+			<span class="index-link-title">Filter All-in-one Demo</span>
+			<span class="filename">views/05_filter_all.html</span></a>
+			<span class="label-date new">2025.12.10</span>		</li>
+		</ul>
+	</section>
+	<a href="#cate-top" class="go-to-top" style="position:fixed;bottom:80px;right:30px;border-radius:100%;display:flex;justify-content:center;align-items:center;font-size:15px;background-color:#134672;color:#fff;width:45px;height:45px;line-height:45px;">Top</a>
+	<footer class="index-footer">
+		<p class="index-info"><strong>Hivelab</strong> / UIT / Developer1, Developer2</p>
+	</footer>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+	<script>
+		let chk=false;
+	// preview 
+		$('body').keyup(function(e){	
+			if(e.keyCode === 27) {
+				$('.section-list ul li').removeClass('on');
+				$(".section-list").off("click", "ul li a");
+				$(".section-list ul li").unbind();
+				$('#index_view iframe').remove();
+				$('#index_view').remove();
+				$('#preview-box').remove();
+				$(document).off('keydown');
+				chk=false;
+			}
+		})
+		var changeSrc = function () {
+			$(".section-list:visible").on("click", "ul li:visible a", function (e) {
+				if(chk===false) return;
+				$('.section-list li').removeClass('on');
+				$('#preview-box') && $(".section-list").find("li").removeClass("on");
+				$(this).parent().addClass("on");
+				e.preventDefault();
+				$("#index_view iframe").attr("src", $(this).attr("href")) });
+					// visible li 배열 생성 (필터링된 상태 반영)
+    		function getVisibleItems() {
+        	return $('.section-list:visible ul:visible li:visible');
+    		}
+				$(".section-list").on("dblclick", "ul li a", function () { window.open(this.href) });
+				$(document).keydown(function (e) { 
+        var visibleItems = getVisibleItems();
+        var currentIndex = visibleItems.index($('.on'));
+        switch (e.which) { 
+          case 13:
+            window.open($(".on a")[0].href); 
+            break;
+          case 37: case 39:
+            break; 
+          case 38: // Up
+            if (currentIndex > 0) {
+              visibleItems.eq(currentIndex - 1).find("a").trigger("click");
+            } else {
+              // 첫 아이템이면 이전 섹션의 마지막 visible li로 이동
+              var prevSection = $('.on').parents('.section-list').prev('.section-list:visible');
+              if (prevSection.length) {
+                var prevItems = prevSection.find('ul:visible li:visible');
+                if (prevItems.length) {
+                  prevItems.last().find("a").trigger("click");
+                }
+              }
+            }
+            break; 
+          case 40: // Down
+            if (currentIndex < visibleItems.length - 1) {
+              visibleItems.eq(currentIndex + 1).find("a").trigger("click");
+            } else {
+              // 마지막 아이템이면 다음 섹션의 첫 visible li로 이동
+              var nextSection = $('.on').parents('.section-list').next('.section-list:visible');
+              if (nextSection.length) {
+                var nextItems = nextSection.find('ul:visible li:visible');
+                if (nextItems.length) {
+                  nextItems.first().find("a").trigger("click");
+                }
+              }
+            }
+            break; 
+          default: return;
+        }
+    	});
+		}, 		
+			indexView = function () {
+				chk=true;
+				var e = $("body").css("overflow-y", "hidden").outerWidth() - $("body").css("overflow-y", "scroll").outerWidth();
+				$("body").removeAttr("style"),
+				$("body").append(`<div id="index_view" style="width:${750 + e}px"><iframe src="" frameborder="0" style="width:100%"></iframe></div>`),
+				changeSrc(),
+				$("body").append('<div id="preview-box" style="position:fixed;top:80px;left:30%;line-height:0;z-index:10;"><button type="button" style="height:20px;margin-right:4px;border:0;border-radius:4px;background:#777;color:#fff;font-size:11px;padding:3px 4px;" onclick="$(\'#index_view\').css(\'width\',\'' + (375 + e) + "');\">375px</button><button type=\"button\" style=\"height:20px;margin-right:4px;border:0;border-radius:4px;background:#777;color:#fff;font-size:11px;padding:3px 4px;\" onclick=\"$('#index_view').css('width','" + (750 + e) + "');\">750px</button><button type=\"button\" style=\"height:20px;margin-right:4px;border:0;border-radius:4px;background:#777;color:#fff;font-size:11px;padding:3px 4px;\" onclick=\"$('#index_view').css('right','10px');$('#index_view').css('width','auto');$('#index_view iframe').width('100%');\">100%</button></div>")
+			};
+			$(".preview_btn").on("click", function () { indexView()})
+	// search
+	var categoryList=["All"],
+	categoryUnique=[],
+	categoryUnique2=[],
+	sectionList=$(".section-list"),
+	categorySelect=$("#index-search-from-menu"),
+	dateLabel=sectionList.find(".label-date")
+	,dateSelect=$("#index-search-from-date"),
+	dateList=["Default"],
+	dateUnique=[],
+	searchKeyword=$("#index-search-by-keyword"),
+	searchValue=null,
+	hiddenList=function(){sectionList.hide();sectionList.find("h2").hide(),sectionList.find("h3").hide(),sectionList.find("ul").hide(),sectionList.find("li").hide();},
+	showList=function(i){sectionList=$(".section-list"); i==undefined?sectionList.show():sectionList.eq(i-1).show(),sectionList.find("h2").show(),sectionList.find("h3").show(),sectionList.find("ul").show(),sectionList.find("li").show()},
+	resetStyle=function(){searchKeyword.val(""),sectionList.find("li a").removeClass("matching_keywords")},
+	setCategory=function(){
+		if(sectionList.find("h2").length>0){
+			for(var e=0;e<sectionList.find("h2").length+1;e++)
+			categoryList.push(sectionList.find("h2").eq(e).text()),
+			$.each(categoryList,function(e,t){-1===$.inArray(t,categoryUnique)&&categoryUnique.push(t)});
+			categoryUnique=$.grep(categoryUnique,function(e){return" "==e||e});
+		for(var t=0;t<categoryUnique.length;t++)categorySelect.append("<option value="+t+">"+categoryUnique[t]+"</option>");
+		categorySelect.on("change",function(){
+			var e=$(this).val();
+			"0"==e
+			?showList()
+			:(
+				dateSelect.val("Default").change(),resetStyle(),hiddenList(),
+				showList(e),
+				$.each($(".section-list h2"), function(t,i){
+					t==e-1&&($(this).show(),$(this).nextAll('h3').show(),
+					$(this).nextAll('h3').next("ul").show(),
+					$(this).nextAll('h3').next("ul").find("li").show())
+				})
+			)
+		}
+	)}else 
+	$(".index-search-menu").hide()},
+	setDate=function(){
+		if(dateLabel.length>0){
+			for(var e=0;e<dateLabel.length;e++)
+				dateList.push(dateLabel.eq(e).text()),
+				$.each(dateList,function(e,t){
+					-1===$.inArray(t,dateUnique)&&dateUnique.push(t)
+				});
+			Array.prototype.move=function(e,t){
+				return this.splice(t,0,this.splice(e,1)[0]),this
+			},
+			dateUnique.sort(),
+			dateUnique.move(dateUnique.lastIndexOf(),0);
+			for(var t=0;t<dateUnique.length;t++)
+				dateSelect.append("<option value="+dateUnique[t]+">"+dateUnique[t]+"</option>");
+			dateSelect.on("change",function(){
+				var e=$(this).val();
+				"Default"==e
+			? showList()
+			:(
+				categorySelect.val("0").change(),resetStyle(),hiddenList(),
+				$.each($(".section-list .label-date"),function(t,i){
+					$(this).text()==e&&($(this).parents(".section-list").show(),
+					$(this).parents("ul").prevAll("h2").show(),$(this).parents("ul").prev("h3").show(),
+					$(this).parents("ul").show(),$(this).parents("li").show())		
+				})
+			)
+		})
+	}else $(".search_date").hide()
+},
+	searchFromKeyword=function(){
+		searchKeyword.on("keyup", function(e){
+			searchValue=$(this).val(),
+			categorySelect.val("0").change(),dateSelect.val("Default").change(),
+			searchValue.length!==0
+			? (hiddenList(),
+					sectionList.find("li").each(function(e,t){
+						var i=$(this).find("a:contains("+searchValue+")");
+						i.parents("ul").parents("section").show(),
+						i.parents("ul").prevAll("h2").show(),
+						i.parents("ul").prev("h3").show(),
+						i.parents("ul").show(),
+						i.parents("li").show(),
+						i.addClass("matching_keywords");
+					})
+				)
+			:(showList(),sectionList.find("a").removeClass("matching_keywords"))
+		}
+	)};
+	$(window).on("load",function(){setCategory(),setDate(),searchFromKeyword()})
+</script>
+</body>
+</html>

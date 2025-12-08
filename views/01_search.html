@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>search</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body data-pagestatus="new : 2025.09.19" class="dashboard-wrap">
+	<section class="finder">
+		<header class="finder__hero">
+			<div>
+				<p class="eyebrow">추천 리소스</p>
+				<h2>필요한 자료를 빠르게 찾아보세요</h2>
+				<p class="lede">키워드 검색과 탭 전환으로 원하는 카드만 필터링합니다.</p>
+				<div class="searchbox">
+					<input type="search" placeholder="검색어를 입력하세요" data-search="">
+					<button data-search-btn="" aria-label="검색">검색</button>
+				</div>
+			</div>
+		</header>
+		<div class="finder__summary">
+			<span class="count">98</span> result found for '<span class="keyword">PBV</span>'
+		</div>
+		<section class="finder__section finder__section--menus">
+			<div class="section-head">
+				<h3>Menus <span class="section-count">5</span></h3>
+			</div>
+			<div class="menu-list">
+				<div class="menu-card">
+					<span class="path">PBV &gt; PBV Electric Vans Vision</span>
+					<span class="arrow">›</span>
+				</div>
+				<div class="menu-card">
+					<span class="path">Special PBV &gt; PBV Electric Vans Vision</span>
+					<span class="arrow">›</span>
+				</div>
+				<div class="menu-card">
+					<span class="path">PBV &gt; PBV Electric Vans Vision</span>
+					<span class="arrow">›</span>
+				</div>
+				<div class="menu-card">
+					<span class="path">menu02 &gt; PBV Electric Vans Vision</span>
+					<span class="arrow">›</span>
+				</div>
+			</div>
+			<button class="more" type="button">More (8)</button>
+		</section>
+		<section class="finder__section finder__section--vehicles">
+			<div class="section-head">
+				<h3>Vehicles <span class="section-count">5</span></h3>
+				<div class="badges">
+					<span class="badge">New</span>
+					<span class="badge badge--green">Promotion</span>
+				</div>
+			</div>
+			<div class="finder__grid" data-list=""></div>
+			<div class="finder__empty" data-empty="" hidden="">검색 결과가 없습니다.</div>
+			<button class="more" type="button">More (8)</button>
+		</section>
+	</section>
+	<!-- 실습 데모 섹션: 챕터별 예제 -->
+	<section class="practice">
+		<h2>실습 예제</h2>
+		<!-- 1) DOM 조작: GNB 토글 -->
+		<header class="gnb" data-gnb="">
+			<button class="gnb__toggle" aria-expanded="false">GNB Menu</button>
+			<nav class="gnb__list" hidden="">
+				<a href="#">Home</a><a href="#">About</a>
+			</nav>
+		</header>
+		<!-- 2) 반복 렌더링: 카드 리스트 -->
+		<div class="practice__block">
+			<h3>카드 리스트 렌더</h3>
+			<ul class="cards" data-cards=""></ul>
+		</div>
+		<!-- 3) 상태/인터랙션: 탭 필터 -->
+		<div class="practice__block">
+			<h3>탭 필터</h3>
+			<div class="tabs" data-tabs="">
+				<button data-tab="all" class="is-active">전체</button>
+				<button data-tab="guide">가이드</button>
+				<button data-tab="sample">샘플</button>
+			</div>
+			<ul class="cards" data-cards-tab=""></ul>
+		</div>
+		<!-- 4) 입력·유효성 -->
+		<div class="practice__block">
+			<h3>입력 유효성</h3>
+			<form class="form" data-form="" novalidate="">
+				<input type="email" name="email" required="" placeholder="이메일">
+				<span class="msg" data-msg=""></span>
+				<button type="submit">제출</button>
+			</form>
+		</div>
+		<!-- 5) fetch 상태 데모 -->
+		<div class="practice__block">
+			<h3>데이터 로딩 상태</h3>
+			<div class="state" data-state="">로딩 준비</div>
+			<ul class="cards" data-fetch-list=""></ul>
+			<div class="empty" data-fetch-empty="" hidden="">데이터 없음</div>
+			<div class="error" data-fetch-error="" hidden="">오류</div>
+		</div>
+		<!-- 6) 모달 컴포넌트 -->
+		<div class="practice__block">
+			<h3>모달</h3>
+			<button data-open="">모달 열기</button>
+			<div class="modal" data-modal="" hidden="">
+				<div class="backdrop" data-close=""></div>
+				<div class="panel" role="dialog">
+					<p>모달 내용</p>
+					<button data-close="">닫기</button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/search.js"></script>
+
+
+
+</body></html>

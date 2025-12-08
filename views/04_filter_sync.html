@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>Filter Sync</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body data-pagestatus="new : 2025.12.10" class="dashboard-wrap">
+	<main class="filter-sync" data-app-sync="">
+		<header class="filter-hero">
+			<h2>검색·필터·URL 동기화 리스트</h2>
+			<p class="lede">검색어/카테고리/태그/정렬/페이지 상태를 URL 쿼리로 보존합니다.</p>
+		</header>
+		<section class="filter-panel">
+			<div class="controls">
+				<div class="control">
+					<label for="fs-search">검색</label>
+					<input id="fs-search" type="search" placeholder="검색어를 입력하세요" data-search="">
+				</div>
+				<div class="control">
+					<label for="fs-category">카테고리</label>
+					<select id="fs-category" data-category="">
+						<option value="all">전체</option>
+						<option value="suv">SUV</option>
+						<option value="sedan">세단</option>
+						<option value="ev">전기차</option>
+					</select>
+				</div>
+				<div class="control">
+					<label>태그</label>
+					<div class="chips" data-tags="">
+						<button type="button" data-tag="new">New</button>
+						<button type="button" data-tag="promo">Promotion</button>
+						<button type="button" data-tag="awd">AWD</button>
+					</div>
+				</div>
+				<div class="control">
+					<label for="fs-sort">정렬</label>
+					<select id="fs-sort" data-sort="">
+						<option value="recent">최신순</option>
+						<option value="price-asc">가격낮은순</option>
+						<option value="price-desc">가격높은순</option>
+					</select>
+				</div>
+			</div>
+			<div class="summary">
+				<span data-count="">0</span> 개의 결과 (검색어: <span data-keyword="">전체</span>)
+			</div>
+			<div class="state" data-state=""></div>
+			<div class="cards" data-list=""></div>
+			<div class="empty" data-empty="" hidden="">검색 결과가 없습니다.</div>
+			<div class="error" data-error="" hidden="">데이터를 불러오지 못했습니다.</div>
+			<div class="actions">
+				<div class="pager">
+					<button type="button" data-prev="">이전</button>
+					<span data-page="">1</span>
+					<button type="button" data-next="">다음</button>
+				</div>
+				<button type="button" class="reset" data-reset="">초기화</button>
+			</div>
+		</section>
+	</main>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/filter-sync.js"></script>
+	<style>
+	.filter-sync {
+		padding: 32px 16px 80px;
+		max-width: 1080px;
+		margin: 0 auto;
+		display: grid;
+		gap: 16px;
+	}
+
+	.filter-hero h2 {
+		font-size: 28px;
+		font-weight: 700;
+		margin-bottom: 6px;
+	}
+
+	.filter-hero .lede {
+		color: #5f6b7a;
+	}
+
+	.filter-panel {
+		display: grid;
+		gap: 16px;
+	}
+
+	.controls {
+		display: grid;
+		gap: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		padding: 16px;
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		background: #f8fafc;
+	}
+
+	.control {
+		display: grid;
+		gap: 6px;
+	}
+
+	.control label {
+		font-weight: 600;
+	}
+
+	.control input, .control select {
+		padding: 10px;
+		border: 1px solid #d7dde6;
+		border-radius: 8px;
+	}
+
+	.chips {
+		display: flex;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+
+	.chips button {
+		padding: 6px 10px;
+		border: 1px solid #d7dde6;
+		border-radius: 999px;
+		background: #fff;
+		cursor: pointer;
+	}
+
+	.chips button.is-active {
+		border-color: #0a84ff;
+		color: #0a84ff;
+		background: #e8f2ff;
+	}
+
+	.summary {
+		font-size: 14px;
+		color: #475569;
+	}
+
+	.summary [data-count], .summary [data-keyword] {
+		font-weight: 700;
+		color: #0a84ff;
+	}
+
+	.state {
+		min-height: 18px;
+		color: #7b828a;
+	}
+
+	.cards {
+		display: grid;
+		gap: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	}
+
+	.card {
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		padding: 14px;
+		background: #fff;
+		box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+		display: grid;
+		gap: 8px;
+	}
+
+	.card .meta {
+		font-size: 13px;
+		color: #5b6370;
+	}
+
+	.card .badges {
+		display: flex;
+		gap: 6px;
+		flex-wrap: wrap;
+	}
+
+	.badge {
+		padding: 2px 8px;
+		border-radius: 999px;
+		font-size: 12px;
+		border: 1px solid #d4e4c5;
+		background: #f5faef;
+		color: #4c8b1f;
+	}
+
+	.badge.promo {
+		border-color: #f4d7a6;
+		background: #fff7e6;
+		color: #ae6b07;
+	}
+
+	.badge.awd {
+		border-color: #cbd5e1;
+		background: #f8fafc;
+		color: #475569;
+	}
+
+	.empty, .error {
+		padding: 10px;
+		color: #7a7f89;
+	}
+
+	.actions {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+	}
+
+	.pager {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+
+	.pager button, .reset {
+		padding: 8px 12px;
+		border: 1px solid #d7dde6;
+		border-radius: 10px;
+		background: #fff;
+		cursor: pointer;
+	}
+
+	</style>
+
+
+
+</body></html>

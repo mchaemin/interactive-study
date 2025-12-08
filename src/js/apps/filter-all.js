@@ -58,11 +58,6 @@
     };
   };
 
-  const hasActiveFilters = () => {
-    const q = state.keyword.trim();
-    return Boolean(q || state.category !== 'all' || state.tags.size > 0);
-  };
-
   const formatPrice = num => `₩${num.toLocaleString()}`;
 
   const createSkeletons = count => {
@@ -141,15 +136,6 @@
     stateEl.textContent = '';
     errorEl.hidden = !state.error;
     if (state.error) return;
-
-    if (!hasActiveFilters()) {
-      listEl.innerHTML = '';
-      emptyEl.hidden = true;
-      countEl.textContent = 0;
-      keywordEl.textContent = '검색 필요';
-      renderPills();
-      return;
-    }
 
     const filtered = sortItems(filterItems(), state.sort);
     state.total = filtered.length;

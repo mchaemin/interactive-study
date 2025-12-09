@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>Search</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body class="dashboard-wrap">
+	<main class="kia-search" data-kia-app="">
+		<header class="hero">
+			<h2>Search</h2>
+			<div class="searchbar">
+				<input type="search" placeholder="검색어를 입력하세요" data-search="">
+				<button type="button" data-search-btn="" aria-label="검색">
+					<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"></circle>
+						<line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+					</svg>
+				</button>
+			</div>
+			<p class="result"><span data-count="">0</span> result found for '<span data-keyword="">전체</span>'</p>
+		</header>
+		<section class="section">
+			<div class="section-head">
+				<h3>Menus <span data-menu-count="">5</span></h3>
+			</div>
+			<div class="menu-list" data-menu-list=""></div>
+			<button class="more" type="button" data-menu-more="" hidden="">More</button>
+		</section>
+		<section class="section">
+			<div class="section-head">
+				<h3>Vehicles <span data-vehicle-count="">5</span></h3>
+			</div>
+			<div class="vehicle-grid" data-vehicle-list=""></div>
+			<button class="more" type="button" data-vehicle-more="" hidden="">More</button>
+		</section>
+		<section class="section">
+			<div class="section-head">
+				<h3>Pages <span data-page-count="">5</span></h3>
+			</div>
+			<div class="page-list" data-page-list=""></div>
+			<button class="more" type="button" data-page-more="" hidden="">More</button>
+		</section>
+	</main>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/kia-style.js"></script>
+	<style>
+	.dashboard-wrap {
+		padding: 50px;
+	}
+
+	.kia-search {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 48px 16px 80px;
+		display: grid;
+		gap: 80px;
+	}
+
+	.hero h2 {
+		font-size: 28px;
+		font-weight: 700;
+		color: #5f6368;
+		margin-bottom: 50px;
+	}
+
+	.searchbar {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		border-bottom: 2px solid #111;
+		padding-bottom: 8px;
+	}
+
+	.searchbar input {
+		flex: 1;
+		border: 0;
+		font-size: 18px;
+		padding: 8px 0;
+		background: transparent;
+	}
+
+	.searchbar input:focus {
+		outline: none;
+	}
+
+	.searchbar button {
+		border: 0;
+		background: transparent;
+		font-size: 18px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.result {
+		color: #5f6368;
+		margin-top: 50px;
+	}
+
+	.section {
+		display: grid;
+		gap: 12px;
+	}
+
+	.section-head {
+		display: flex;
+		gap: 8px;
+		align-items: baseline;
+	}
+
+	.section-head h3 {
+		font-size: 20px;
+		font-weight: 700;
+	}
+
+	.menu-list {
+		display: grid;
+		gap: 8px;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	}
+
+	.menu-card {
+		border: 1px solid #e5e7eb;
+		border-radius: 10px;
+		padding: 12px 14px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: #fff;
+	}
+
+	.menu-card .path {
+		color: #2f6c17;
+		font-weight: 600;
+	}
+
+	.vehicle-grid {
+		display: grid;
+		gap: 16px;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.vehicle-card {
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		padding: 12px;
+		background: #fff;
+		box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+		display: grid;
+		gap: 8px;
+	}
+
+	.vehicle-card .thumb {
+		height: 140px;
+		background: #f8fafc;
+		border-radius: 10px;
+	}
+
+	.vehicle-card .price {
+		color: #111;
+		font-weight: 700;
+	}
+
+	.vehicle-card .badges {
+		display: flex;
+		gap: 6px;
+		flex-wrap: wrap;
+	}
+
+	.badge {
+		padding: 2px 8px;
+		border-radius: 999px;
+		font-size: 12px;
+		border: 1px solid #d4e4c5;
+		background: #f5faef;
+		color: #4c8b1f;
+	}
+
+	.badge.promo {
+		border-color: #f4d7a6;
+		background: #fff7e6;
+		color: #ae6b07;
+	}
+
+	.page-list {
+		display: grid;
+		gap: 10px;
+	}
+
+	.page-item {
+		border-bottom: 1px solid #e5e7eb;
+		padding: 10px 0;
+	}
+
+	.page-item:last-child {
+		border-bottom: 0;
+	}
+
+	.more {
+		justify-self: center;
+		padding: 8px 12px;
+		margin-top: 30px;
+		border: 1px solid #d7dde6;
+		border-radius: 18px;
+		background: #fff;
+		cursor: pointer;
+	}
+
+	@media (max-width: 1024px) {
+		.vehicle-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.vehicle-grid {
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+		}
+	}
+
+	</style>
+
+
+
+</body></html>

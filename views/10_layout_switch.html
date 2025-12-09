@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>Layout Switch</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body class="dashboard-wrap">
+	<main class="demo layout-switch" data-layout-app="">
+		<header class="hero">
+			<h2>Layout Switch (Card ↔ List)</h2>
+			<p class="lede">카드 뷰와 리스트 뷰 전환</p>
+			<div class="switch">
+				<button type="button" data-view="card" class="is-active">카드 뷰</button>
+				<button type="button" data-view="list">리스트 뷰</button>
+			</div>
+		</header>
+		<section class="container" data-container="">
+			<!-- JS 렌더 -->
+		</section>
+	</main>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/layout-switch.js"></script>
+	<style>
+	.layout-switch {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 32px 16px 80px;
+		display: grid;
+		gap: 16px;
+	}
+
+	.hero h2 {
+		font-size: 26px;
+		font-weight: 700;
+		margin-bottom: 6px;
+	}
+
+	.hero .lede {
+		color: #5f6b7a;
+	}
+
+	.switch {
+		display: flex;
+		gap: 8px;
+	}
+
+	.switch button {
+		padding: 8px 12px;
+		border: 1px solid #d7dde6;
+		border-radius: 8px;
+		background: #fff;
+		cursor: pointer;
+	}
+
+	.switch .is-active {
+		background: #0a84ff;
+		color: #fff;
+		border-color: #0a84ff;
+	}
+
+	.container.card-view {
+		display: grid;
+		gap: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	}
+
+	.container.list-view {
+		display: grid;
+		gap: 8px;
+	}
+
+	.item.card {
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		padding: 12px;
+		background: #fff;
+		box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+	}
+
+	.item.list {
+		border-bottom: 1px solid #e5e7eb;
+		padding: 10px 0;
+	}
+
+	</style>
+
+
+
+</body></html>

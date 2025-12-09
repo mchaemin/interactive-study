@@ -1,0 +1,43 @@
+<%-include('./include/head.ejs',{"title" : "Pagination UI", "listTitle" : "Pagination : Main" })-%>
+<body class="dashboard-wrap">
+
+<main class="demo pagination-demo" data-pagination-app>
+  <header class="hero">
+    <h2>Pagination UI</h2>
+    <p class="lede">페이지 번호/이전·다음, 상태 분기(빈/에러) 예제</p>
+  </header>
+
+  <section class="pager-wrap">
+    <div class="state" data-state role="status" aria-live="polite"></div>
+    <div class="cards" data-list aria-live="polite"></div>
+    <div class="empty" data-empty hidden>데이터가 없습니다.</div>
+    <div class="error" data-error hidden>불러오기 오류</div>
+
+    <div class="pager" data-pager>
+      <button type="button" data-prev>이전</button>
+      <div class="pages" data-pages></div>
+      <button type="button" data-next>다음</button>
+    </div>
+  </section>
+</main>
+
+<%-include('./include/script.ejs')%>
+<script src="../js/apps/pagination.js"></script>
+
+<style>
+  .pagination-demo { max-width: 960px; margin: 0 auto; padding: 32px 16px 80px; display:grid; gap:16px; }
+  .hero h2 { font-size: 26px; font-weight:700; margin-bottom:6px; }
+  .hero .lede { color:#5f6b7a; }
+  .state { min-height:18px; color:#7b828a; }
+  .cards { display:grid; gap:12px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+  .card { border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,0.04); }
+  .empty, .error { padding:10px; color:#7a7f89; }
+  .pager { display:flex; gap:8px; align-items:center; justify-content:center; margin-top: 50px;}
+  .pager button { padding:8px 12px; border:1px solid #d7dde6; border-radius:8px; background:#fff; cursor:pointer; }
+  .pages { display:flex; gap:6px; }
+  .pages button { padding:6px 10px; border:1px solid #d7dde6; border-radius:6px; background:#fff; cursor:pointer; }
+  .pages button.is-active { background:#0a84ff; color:#fff; border-color:#0a84ff; }
+  [hidden]{display:none !important;}
+</style>
+</body>
+</html>

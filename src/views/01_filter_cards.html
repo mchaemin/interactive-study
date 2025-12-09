@@ -1,21 +1,21 @@
-<%-include('./include/head.ejs',{"title" : "Filter Sync", "listTitle" : "Filter Cards with URL Sync" })-%>
+<%-include('./include/head.ejs',{"title" : "Filter Cards", "listTitle" : "Filter Cards : Main"})-%>
 <body data-pagestatus="new : 2025.12.10" class="dashboard-wrap">
 
-<main class="filter-sync" data-app-sync>
+<main class="filter-demo" data-app>
   <header class="filter-hero">
-    <h2>검색·필터·URL 동기화 리스트</h2>
-    <p class="lede">검색어/카테고리/태그/정렬/페이지 상태를 URL 쿼리로 보존합니다.</p>
+    <h2>필터 기능이 있는 카드 리스트</h2>
+    <p class="lede">검색·카테고리·태그·정렬·더보기까지 한 번에 확인하는 실습 페이지</p>
   </header>
 
   <section class="filter-panel">
     <div class="controls">
       <div class="control">
-        <label for="fs-search">검색</label>
-        <input id="fs-search" type="search" placeholder="검색어를 입력하세요" data-search />
+        <label for="fd-search">검색</label>
+        <input id="fd-search" type="search" placeholder="검색어를 입력하세요" data-search />
       </div>
       <div class="control">
-        <label for="fs-category">카테고리</label>
-        <select id="fs-category" data-category>
+        <label for="fd-category">카테고리</label>
+        <select id="fd-category" data-category>
           <option value="all">전체</option>
           <option value="suv">SUV</option>
           <option value="sedan">세단</option>
@@ -31,8 +31,8 @@
         </div>
       </div>
       <div class="control">
-        <label for="fs-sort">정렬</label>
-        <select id="fs-sort" data-sort>
+        <label for="fd-sort">정렬</label>
+        <select id="fd-sort" data-sort>
           <option value="recent">최신순</option>
           <option value="price-asc">가격낮은순</option>
           <option value="price-desc">가격높은순</option>
@@ -50,21 +50,17 @@
     <div class="error" data-error hidden>데이터를 불러오지 못했습니다.</div>
 
     <div class="actions">
-      <div class="pager">
-        <button type="button" data-prev>이전</button>
-        <span data-page>1</span>
-        <button type="button" data-next>다음</button>
-      </div>
+      <button type="button" class="more" data-more>더 보기</button>
       <button type="button" class="reset" data-reset>초기화</button>
     </div>
   </section>
 </main>
 
 <%-include('./include/script.ejs')%>
-<script src="../js/apps/filter-sync.js"></script>
+<script src="../js/apps/filter-demo.js"></script>
 
 <style>
-  .filter-sync { padding: 32px 16px 80px; max-width: 1080px; margin: 0 auto; display: grid; gap: 16px; }
+  .filter-demo { padding: 32px 16px 80px; max-width: 1080px; margin: 0 auto; display: grid; gap: 16px; }
   .filter-hero h2 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
   .filter-hero .lede { color: #5f6b7a; }
   .filter-panel { display: grid; gap: 16px; }
@@ -86,9 +82,8 @@
   .badge.promo { border-color:#f4d7a6; background:#fff7e6; color:#ae6b07; }
   .badge.awd { border-color:#cbd5e1; background:#f8fafc; color:#475569; }
   .empty, .error { padding:10px; color:#7a7f89; }
-  .actions { display:flex; gap:10px; align-items:center; }
-  .pager { display:flex; gap:8px; align-items:center; }
-  .pager button, .reset { padding:8px 12px; border:1px solid #d7dde6; border-radius:10px; background:#fff; cursor:pointer; }
+  .actions { display:flex; gap:10px; }
+  .more, .reset { padding:10px 14px; border:1px solid #d7dde6; border-radius:10px; background:#fff; cursor:pointer; }
 </style>
 </body>
 </html>

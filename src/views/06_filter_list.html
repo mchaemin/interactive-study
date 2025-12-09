@@ -1,0 +1,85 @@
+<%-include('./include/head.ejs',{"title" : "Filter + List", "listTitle" : "Filter + Card List : Main" })-%>
+<body class="dashboard-wrap">
+<main class="demo filter-basic" data-app-filter-basic>
+  <header class="hero">
+    <h2>Filter + 카드 리스트</h2>
+    <p class="lede">검색/카테고리/태그/정렬 + 무한스크롤 + 스켈레톤 + 최근검색어(sessionStorage)</p>
+  </header>
+
+  <section class="panel">
+    <div class="controls">
+      <label>검색
+        <input type="search" placeholder="검색어를 입력하세요" data-search />
+      </label>
+      <label>카테고리
+        <select data-category>
+          <option value="all">전체</option>
+          <option value="suv">SUV</option>
+          <option value="sedan">세단</option>
+          <option value="ev">전기차</option>
+        </select>
+      </label>
+      <label>태그
+        <div class="chips" data-tags>
+          <button type="button" data-tag="new">New</button>
+          <button type="button" data-tag="promo">Promotion</button>
+          <button type="button" data-tag="awd">AWD</button>
+        </div>
+      </label>
+      <label>정렬
+        <select data-sort>
+          <option value="recent">최신순</option>
+          <option value="price-asc">가격낮은순</option>
+          <option value="price-desc">가격높은순</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="summary">
+      <span data-count>0</span> 개 결과 · 검색어: <span data-keyword>전체</span>
+      <div class="recent">
+        <strong>최근 검색어</strong>
+        <div class="chips" data-recent></div>
+      </div>
+    </div>
+
+    <div class="state" data-state role="status" aria-live="polite"></div>
+    <div class="cards" data-list aria-live="polite"></div>
+    <div class="empty" data-empty hidden role="status" aria-live="polite">검색 결과가 없습니다.</div>
+    <div class="error" data-error hidden role="status" aria-live="polite">데이터를 불러오지 못했습니다.</div>
+    <div class="sentinel" data-sentinel aria-hidden="true"></div>
+  </section>
+</main>
+
+<%-include('./include/script.ejs')%>
+<script src="../js/apps/filter-basic.js"></script>
+
+<style>
+  .filter-basic { max-width: 1080px; margin: 0 auto; padding: 32px 16px 80px; display: grid; gap: 16px; }
+  .hero h2 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .hero .lede { color: #5f6b7a; }
+  .panel { display: grid; gap: 16px; }
+  .controls { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); padding:14px; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; }
+  .controls label { display:grid; gap:6px; font-weight:600; }
+  .controls input, .controls select { padding:10px; border:1px solid #d7dde6; border-radius:8px; }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; }
+  .chips button { padding:6px 10px; border:1px solid #d7dde6; border-radius:999px; background:#fff; cursor:pointer; }
+  .chips button.is-active { border-color:#0a84ff; color:#0a84ff; background:#e8f2ff; }
+  .summary { display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:14px; color:#475569; }
+  .summary [data-count], .summary [data-keyword] { font-weight:700; color:#0a84ff; }
+  .state { min-height:18px; color:#7b828a; }
+  .cards { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); }
+  .card { border:1px solid #e5e7eb; border-radius:12px; padding:14px; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,0.04); display:grid; gap:8px; }
+  .card .meta { font-size:13px; color:#5b6370; }
+  .card .badges { display:flex; gap:6px; flex-wrap:wrap; }
+  .badge { padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #d4e4c5; background:#f5faef; color:#4c8b1f; }
+  .badge.promo { border-color:#f4d7a6; background:#fff7e6; color:#ae6b07; }
+  .badge.awd { border-color:#cbd5e1; background:#f8fafc; color:#475569; }
+  .skeleton { height:140px; border-radius:12px; background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%); background-size: 400% 100%; animation: shimmer 1.4s ease infinite; }
+  @keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+  .empty, .error { padding:10px; color:#7a7f89; }
+  .sentinel { height:1px; }
+  [hidden]{display:none !important;}
+</style>
+</body>
+</html>

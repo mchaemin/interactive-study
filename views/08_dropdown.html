@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>Dropdown</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body class="dashboard-wrap">
+	<main class="demo dropdown-demo" data-dropdown-app="">
+		<header class="hero">
+			<h2>Dropdown 메뉴</h2>
+			<p class="lede">접근성/키보드/aria 적용한 드롭다운</p>
+		</header>
+		<div class="dropdown" data-dropdown="">
+			<button class="dropdown__btn" aria-expanded="false" aria-controls="dd-list">선택하세요</button>
+			<ul class="dropdown__list" id="dd-list" role="listbox" hidden="">
+				<li><button type="button" role="option" data-value="all">전체</button></li>
+				<li><button type="button" role="option" data-value="suv">SUV</button></li>
+				<li><button type="button" role="option" data-value="sedan">세단</button></li>
+				<li><button type="button" role="option" data-value="ev">전기차</button></li>
+			</ul>
+		</div>
+		<p class="selected">선택값: <span data-selected="">없음</span></p>
+	</main>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/dropdown-demo.js"></script>
+	<style>
+	.dropdown-demo {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 32px 16px 80px;
+		display: grid;
+		gap: 16px;
+	}
+
+	.hero h2 {
+		font-size: 26px;
+		font-weight: 700;
+		margin-bottom: 6px;
+	}
+
+	.hero .lede {
+		color: #5f6b7a;
+	}
+
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown__btn {
+		padding: 10px 12px;
+		border: 1px solid #d7dde6;
+		border-radius: 8px;
+		background: #fff;
+		min-width: 140px;
+		text-align: left;
+	}
+
+	.dropdown__list {
+		position: absolute;
+		top: 110%;
+		left: 0;
+		right: 0;
+		background: #fff;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+		padding: 6px 0;
+	}
+
+	.dropdown__list[hidden] {
+		display: none;
+	}
+
+	.dropdown__list button {
+		width: 100%;
+		padding: 8px 12px;
+		text-align: left;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.dropdown__list button:focus, .dropdown__list button:hover {
+		background: #f5f7fa;
+	}
+
+	</style>
+
+
+
+</body></html>

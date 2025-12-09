@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>Dark Mode</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body class="dashboard-wrap" data-theme="light">
+	<main class="demo darkmode-demo" data-dark-app="">
+		<header class="hero">
+			<h2>Dark Mode Toggle</h2>
+			<p class="lede">테마 토글 + 상태 저장(localStorage)</p>
+		</header>
+		<button type="button" class="toggle" data-toggle="">🌙 다크 모드</button>
+		<section class="preview">
+			<h3>프리뷰 카드</h3>
+			<article class="card">
+				<strong>Demo Card</strong>
+				<p>테마 전환 시 배경/텍스트가 바뀝니다.</p>
+			</article>
+		</section>
+	</main>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/darkmode.js"></script>
+	<style>
+	:root {
+		color-scheme: light;
+	}
+
+	:root[data-theme="dark"], body[data-theme="dark"] {
+		color-scheme: dark;
+	}
+
+	.darkmode-demo {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 32px 16px 80px;
+		display: grid;
+		gap: 16px;
+	}
+
+	.hero h2 {
+		font-size: 26px;
+		font-weight: 700;
+		margin-bottom: 6px;
+	}
+
+	.hero .lede {
+		color: #5f6b7a;
+	}
+
+	.toggle {
+		padding: 10px 14px;
+		border: 1px solid #d7dde6;
+		border-radius: 8px;
+		background: #fff;
+		cursor: pointer;
+	}
+
+	body[data-theme="dark"] .toggle {
+		background: #111827;
+		color: #e5e7eb;
+		border-color: #4b5563;
+	}
+
+	.preview {
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		padding: 14px;
+		background: #fff;
+	}
+
+	.preview .card {
+		border: 1px solid #e5e7eb;
+		border-radius: 10px;
+		padding: 12px;
+		background: #f8fafc;
+	}
+
+	body[data-theme="dark"] {
+		background: #0f172a;
+		color: #e5e7eb;
+	}
+
+	body[data-theme="dark"] .preview {
+		background: #1f2937;
+		border-color: #374151;
+	}
+
+	body[data-theme="dark"] .preview .card {
+		background: #111827;
+		border-color: #374151;
+	}
+
+	</style>
+
+
+
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	
+	<title>Modal/Detail Demo</title>
+	<!-- SEO meta tag -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="date" content="">
+	<meta name="sitecode" content="">
+	<!-- // SEO meta tag -->
+	<!-- Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:locale" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:country-name" content="">
+	<!-- // Open Graph -->
+	<!-- Icon & Favicon -->
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="apple-touch-icon" href="../favicon-180x180.png">
+	<!-- // Icon & Favicon -->
+	<link rel="stylesheet" href="../css/libs.css">
+	<link rel="stylesheet" href="../css/avarta.css">
+</head>
+
+<body data-pagestatus="new : 2025.12.10" class="dashboard-wrap">
+	<main class="demo modal-panel" data-modal-app="">
+		<header class="hero">
+			<h2>Modal / Detail Panel UI</h2>
+			<p class="lede">카드 클릭 → 오른쪽 패널 열림, ESC/닫기로 닫힘. 상태 기반 표시/숨김.</p>
+		</header>
+		<section class="cards" data-list="">
+			<!-- JS로 카드 렌더 -->
+		</section>
+		<aside class="detail" data-detail="" hidden="">
+			<button class="detail__close" data-close="" aria-label="닫기">×</button>
+			<div class="detail__body" data-detail-body="">카드를 선택하면 상세가 표시됩니다.</div>
+		</aside>
+	</main>
+	<!-- Javascript -->
+	<script src="../js/libs.js"></script>
+	<script src="../js/avatar.min.js"></script>
+	<!-- // Javascript -->
+	<script src="../js/apps/modal-panel.js"></script>
+	<style>
+	.modal-panel {
+		max-width: 1080px;
+		margin: 0 auto;
+		padding: 32px 16px 80px;
+		display: grid;
+		gap: 16px;
+		position: relative;
+	}
+
+	.hero h2 {
+		font-size: 26px;
+		font-weight: 700;
+		margin-bottom: 6px;
+	}
+
+	.hero .lede {
+		color: #5f6b7a;
+	}
+
+	.cards {
+		display: grid;
+		gap: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	}
+
+	.card {
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		padding: 14px;
+		background: #fff;
+		box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+		cursor: pointer;
+	}
+
+	.card .meta {
+		font-size: 13px;
+		color: #5b6370;
+	}
+
+	.detail {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 360px;
+		background: #fff;
+		border-left: 1px solid #e5e7eb;
+		box-shadow: -8px 0 20px rgba(0, 0, 0, 0.08);
+		padding: 16px;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		gap: 12px;
+		z-index: 1000;
+	}
+
+	.detail[hidden] {
+		display: none;
+	}
+
+	.detail__close {
+		justify-self: end;
+		border: 0;
+		background: transparent;
+		font-size: 20px;
+		cursor: pointer;
+	}
+
+	.detail__body {
+		overflow: auto;
+	}
+
+	</style>
+
+
+
+</body></html>
